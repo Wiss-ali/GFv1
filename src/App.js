@@ -265,12 +265,12 @@ const InvoiceForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="p-2 sm:p-4">
-      <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-4">
+    <div className="p-4"> {/* Padding réduit */}
+      <h2 className="text-xl font-bold text-gray-800 mb-4"> {/* Taille titre réduite */}
         Création de facture
       </h2>
 
-      <div className="overflow-auto">
+      <div className="overflow-auto"> {/* Pour permettre le scroll */}
         <Formik
           initialValues={{
             month: new Date().getMonth() + 1,
@@ -283,15 +283,15 @@ const InvoiceForm = ({ onSubmit }) => {
           }}
           onSubmit={handleSubmit}
         >
-          <Form className="space-y-3 sm:space-y-4">
-            <div className="rounded-lg bg-gray-50 p-3 sm:p-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-2">
+          <Form className="space-y-4"> {/* Espacement réduit */}
+            <div className="rounded-lg bg-gray-50 p-4"> {/* Padding réduit */}
+              <h3 className="text-sm font-semibold text-gray-900 mb-2"> {/* Taille texte réduite */}
                 Mois de facturation
               </h3>
               <Field
                 as="select"
                 name="month"
-                className="w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-sm"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
               >
                 {monthOptions.map((month) => (
                   <option key={month} value={month}>
@@ -301,29 +301,70 @@ const InvoiceForm = ({ onSubmit }) => {
               </Field>
             </div>
 
-            <div className="rounded-lg bg-gray-50 p-3 sm:p-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-2">
+            <div className="rounded-lg bg-gray-50 p-4"> {/* Padding réduit */}
+              <h3 className="text-sm font-semibold text-gray-900 mb-2"> {/* Taille texte réduite */}
                 Détails de la commande
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-1">
+              <div className="grid md:grid-cols-2 gap-4"> {/* Gap réduit */}
+                <div className="space-y-1"> {/* Espacement réduit */}
                   <label className="block text-xs font-medium text-gray-700">
                     Désignation
                   </label>
                   <Field
                     name="designation"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-sm"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                   />
                 </div>
-                {/* Répéter le même pattern pour les autres champs */}
+                <div className="space-y-1">
+                  <label className="block text-xs font-medium text-gray-700">
+                    TVA (%)
+                  </label>
+                  <Field
+                    as="select"
+                    name="tva"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                  >
+                    {tvaOptions.map((rate) => (
+                      <option key={rate} value={rate}>
+                        {rate}%
+                      </option>
+                    ))}
+                  </Field>
+                </div>
+                <div className="space-y-1">
+                  <label className="block text-xs font-medium text-gray-700">
+                    Prix HT
+                  </label>
+                  <Field
+                    name="prix"
+                    type="number"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="block text-xs font-medium text-gray-700">
+                    Quantité
+                  </label>
+                  <Field
+                    as="select"
+                    name="quantite"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                  >
+                    {qteOptions.map((num) => (
+                      <option key={num} value={num}>
+                        {num}
+                      </option>
+                    ))}
+                  </Field>
+                </div>
               </div>
             </div>
 
-            <div className="rounded-lg bg-gray-50 p-3 sm:p-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-2">
+            <div className="rounded-lg bg-gray-50 p-4"> {/* Padding réduit */}
+              <h3 className="text-sm font-semibold text-gray-900 mb-2"> {/* Taille texte réduite */}
                 Informations légales
               </h3>
-              <div className="space-y-2 sm:space-y-3">
+              <div className="space-y-3"> {/* Espacement réduit */}
                 <div className="space-y-1">
                   <label className="block text-xs font-medium text-gray-700">
                     Texte légal
@@ -332,7 +373,7 @@ const InvoiceForm = ({ onSubmit }) => {
                     as="textarea"
                     name="legalText"
                     rows="2"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-sm"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                   />
                 </div>
                 <div className="space-y-1">
@@ -343,16 +384,16 @@ const InvoiceForm = ({ onSubmit }) => {
                     as="textarea"
                     name="bankDetails"
                     rows="3"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-sm"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 pt-3 sm:pt-4">
+            <div className="flex gap-4 pt-4"> {/* Padding réduit */}
               <button
                 type="submit"
-                className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white font-medium text-sm rounded-lg"
+                className="px-4 py-2 bg-blue-600 text-white font-medium text-sm rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200"
               >
                 Générer la facture
               </button>
@@ -360,7 +401,7 @@ const InvoiceForm = ({ onSubmit }) => {
                 <PDFDownloadLink
                   document={<InvoicePDF data={onSubmit.formData} />}
                   fileName="facture.pdf"
-                  className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white font-medium text-sm rounded-lg text-center"
+                  className="px-4 py-2 bg-green-600 text-white font-medium text-sm rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200"
                 >
                   Télécharger PDF
                 </PDFDownloadLink>
@@ -375,45 +416,31 @@ const InvoiceForm = ({ onSubmit }) => {
 
 function App() {
   const [formData, setFormData] = useState(null);
-  const [showPreview, setShowPreview] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-4 sm:py-12 px-2 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="lg:grid lg:grid-cols-2 gap-4 sm:gap-8 items-start">
-          {/* Formulaire */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-4 lg:mb-0 lg:sticky lg:top-4">
-            <div className="h-full overflow-auto">
-              <InvoiceForm onSubmit={(data) => {
-                setFormData(data);
-                setShowPreview(true);
-              }} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Colonne de gauche - Formulaire */}
+          <div className="sticky top-4"> {/* Ajout de sticky positioning */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden" style={{ aspectRatio: '1/1.4142' }}> {/* Même ratio que le PDF */}
+              <div className="h-full overflow-auto"> {/* Permet le scroll si le contenu dépasse */}
+                <InvoiceForm onSubmit={setFormData} />
+              </div>
             </div>
           </div>
           
-          {/* Prévisualisation avec toggle sur mobile */}
-          <div className={`${!showPreview && 'hidden lg:block'}`}>
-            <div className="sticky top-4">
-              {/* Bouton retour sur mobile */}
-              <button
-                className="lg:hidden w-full mb-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg"
-                onClick={() => setShowPreview(false)}
-              >
-                Retour au formulaire
-              </button>
-              
-              {formData ? (
-                <PDFPreview document={<InvoicePDF data={formData} />} />
-              ) : (
-                <div className="bg-gray-50 rounded-xl border-2 border-dashed border-gray-300" style={{ aspectRatio: '1/1.4142' }}>
-                  <div className="flex items-center justify-center h-full">
-                    <p className="text-gray-500 text-sm sm:text-base text-center px-4">
-                      Remplissez le formulaire pour voir l'aperçu
-                    </p>
-                  </div>
+          {/* Colonne de droite - Prévisualisation */}
+          <div> {/* Suppression de la hauteur fixe */}
+            {formData ? (
+              <PDFPreview document={<InvoicePDF data={formData} />} />
+            ) : (
+              <div className="bg-gray-50 rounded-xl border-2 border-dashed border-gray-300" style={{ aspectRatio: '1/1.4142' }}>
+                <div className="flex items-center justify-center h-full">
+                  <p className="text-gray-500">Remplissez le formulaire pour voir l'aperçu</p>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
